@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "eslint-check":
       "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
-    "flow": "flow check src"
+    "flow": "node_modules/.bin/flow"
   },
   "devDependencies": {
     "@babel/core": "7.0.0-beta.34",
@@ -33,7 +33,7 @@
       "^.+\\.js$": "babel-7-jest"
     },
     "moduleDirectories": ["node_modules", "packages"],
-    "automock": true,
+    "automock": false,
     "modulePathIgnorePatterns": ["/node_modules/"]
   },
   "lint-staged": {
