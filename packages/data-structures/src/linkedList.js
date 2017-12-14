@@ -10,10 +10,46 @@ export default class LinkedList {
   }
 
   isEmpty() {
-    return this._length === 0
+    return this.length === 0
   }
 
-  add(n, index) {}
+  add(n, index) {
+    if (index > this.length || index < 0) {
+      throw new Error('Index is out of bounds')
+    }
+    const node = new Node(n)
+
+    if (index !== undefined && index < this.length) {
+      let prevNode
+      let nextNode
+
+      if (index === 0) {
+        nextNode = this.head
+        this.head = node
+      } else {
+        nextNode = this.getNode(index)
+        prevNode = nextNode.prev
+        prevNode.next = node
+        node.prev = prevNode
+      }
+      nextNode.prev = node
+      node.next = nextNode
+    } else {
+      // insert node at tail.next
+      if (!this.head) this.head = node
+
+      if (this.tail) {
+        this.tail.next = node
+        node.prev = this.tail
+      }
+      this.tail = node
+    }
+    this._length++
+  }
+
+  get(index) {
+    return this.getNode(index).value
+  }
 
   getNode(index) {
     if (index >= this.length || index < 0) {
@@ -29,7 +65,7 @@ export default class LinkedList {
 
   del(index) {
     if (index >= this.length || index < 0) {
-      throw new Error('Index is out of bounds')
+      throw new Error('Cannot delete from an empty list')
     }
     this.delNode(this.getNode(index))
   }
