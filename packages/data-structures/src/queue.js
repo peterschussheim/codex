@@ -1,3 +1,5 @@
+import LinkedList from './linkedList'
+
 export default class Queue {
   constructor() {
     this._elements = new LinkedList()
