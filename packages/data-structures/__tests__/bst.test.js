@@ -40,12 +40,6 @@ describe('Binary Search Tree', () => {
     expect(!bst.contains(7))
   })
 
-  /**
-   *            4
-   *       2          8
-   *    1     3    5     10
-   *  0    2.5               100
-   */
   const bst = new BST()
   bst.insert(4)
   bst.insert(8)
@@ -62,15 +56,9 @@ describe('Binary Search Tree', () => {
 
   test(`removes a leaf without altering anything else in the structure of the tree`, () => {
     bst.remove(0)
-    /**
-     *            4
-     *       2          8
-     *    1     3    5     10
-     *       2.5               100
-     */
     const a = []
     bfs(bst.root, callbackGenerator(a))
-    expect.deepEqual(a, [4, 2, 8, 1, 3, 5, 10, 2.5, 100])
+    expect(a).toEqual([4, 2, 8, 1, 3, 5, 10, 2.5, 100])
   })
 
   test(
@@ -78,15 +66,9 @@ describe('Binary Search Tree', () => {
       'it as the root of only subtree',
     () => {
       bst.remove(10)
-      /**
-       *            4
-       *       2          8
-       *    1     3    5     100
-       *       2.5
-       */
       const a = []
       bfs(bst.root, callbackGenerator(a))
-      expect.deepEqual(a, [4, 2, 8, 1, 3, 5, 100, 2.5])
+      expect(a).toEqual([4, 2, 8, 1, 3, 5, 100, 2.5])
     }
   )
 
@@ -94,44 +76,20 @@ describe('Binary Search Tree', () => {
     'substitute an element by the leftmost child in the right ' +
       'subtree and remove it as a leaf',
     () => {
-      /**
-       *            4
-       *       2          8
-       *    1     3    5     100
-       *       2.5
-       */
       bst.remove(2)
-      /**
-       *            4
-       *       2.5        8
-       *     1     3    5     100
-       *
-       */
       let a = []
       bfs(bst.root, callbackGenerator(a))
-      expect.deepEqual(a, [4, 2.5, 8, 1, 3, 5, 100])
+      expect(a).toEqual([4, 2.5, 8, 1, 3, 5, 100])
 
       bst.remove(4)
-      /**
-       *            5
-       *       2.5        8
-       *     1     3        100
-       *
-       */
       a = []
       bfs(bst.root, callbackGenerator(a))
-      expect.deepEqual(a, [5, 2.5, 8, 1, 3, 100])
+      expect(a).toEqual([5, 2.5, 8, 1, 3, 100])
 
       bst.remove(2.5)
-      /**
-       *            5
-       *        3        8
-       *     1              100
-       *
-       */
       a = []
       bfs(bst.root, callbackGenerator(a))
-      expect.deepEqual(a, [5, 3, 8, 1, 100])
+      expect(a).toEqual([5, 3, 8, 1, 100])
     }
   )
 
@@ -156,9 +114,16 @@ describe('Binary Search Tree', () => {
 
   test('throws an error when trying to remove an unexisting node', () => {
     const bst = new BST()
-    expect(bst.remove(0)).toThrowError('Item not found in the tree')
+
+    expect(() => {
+      bst.remove(0)
+    }).toThrowError('Item not found in the tree')
+
     bst.insert(3)
-    expect(bst.remove(0)).toThrowError('Item not found in the tree')
+
+    expect(() => {
+      bst.remove(0)
+    }).toThrowError('Item not found in the tree')
   })
 })
 
@@ -194,12 +159,6 @@ describe('Binary Search Tree with custom comparator', () => {
     expect(!bst.contains('tangerine'))
   })
 
-  /**
-   *           'banana'
-   *     'apple'      'pineapple'
-   *  'pear'               'watermelon'
-   *
-   */
   const bst = new BST(strLenCompare)
   bst.insert('banana')
   bst.insert('apple')
@@ -212,7 +171,7 @@ describe('Binary Search Tree with custom comparator', () => {
   test('inserts the items according to the comparator', () => {
     const a = []
     bfs(bst.root, callbackGenerator(a))
-    expect.deepEqual(a, ['banana', 'apple', 'pineapple', 'pear', 'watermelon'])
+    expect(a).toEqual(['banana', 'apple', 'pineapple', 'pear', 'watermelon'])
   })
 
   test(
@@ -220,14 +179,10 @@ describe('Binary Search Tree with custom comparator', () => {
       'the structure of the tree',
     () => {
       bst.remove('watermelon')
-      /**
-       *           'banana'
-       *     'apple'      'pineapple'
-       *  'pear'
-       */
+
       const a = []
       bfs(bst.root, callbackGenerator(a))
-      expect.deepEqual(a, ['banana', 'apple', 'pineapple', 'pear'])
+      expect(a).toEqual(['banana', 'apple', 'pineapple', 'pear'])
     }
   )
 
@@ -236,13 +191,10 @@ describe('Binary Search Tree with custom comparator', () => {
       'it as the root of only subtree',
     () => {
       bst.remove('apple')
-      /**
-       *           'banana'
-       *     'pear'      'pineapple'
-       */
+
       const a = []
       bfs(bst.root, callbackGenerator(a))
-      expect.deepEqual(a, ['banana', 'pear', 'pineapple'])
+      expect(a).toEqual(['banana', 'pear', 'pineapple'])
     }
   )
 
@@ -251,13 +203,10 @@ describe('Binary Search Tree with custom comparator', () => {
       'subtree and remove it as a leaf',
     () => {
       bst.remove('banana')
-      /**
-       *       'pineapple'
-       *   'pear'
-       */
+
       const a = []
       bfs(bst.root, callbackGenerator(a))
-      expect.deepEqual(a, ['pineapple', 'pear'])
+      expect(a).toEqual(['pineapple', 'pear'])
     }
   )
 })
