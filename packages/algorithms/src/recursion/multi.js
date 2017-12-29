@@ -1,4 +1,3 @@
-// http://raganwald.com/2016/12/27/recursive-data-structures.html
 function mapWith(fn) {
   return function*(iterable) {
     for (const element of iterable) {
