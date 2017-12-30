@@ -1,6 +1,6 @@
 import Graph from '../src/graph'
 
-describe('Graph implemented using an adjacency list', () => {
+describe('Graph using an adjacency list', () => {
   test('accepts a boolean to indicated directed or not (directed by default)', () => {
     const g = new Graph()
     expect(g.directed).toEqual(true)
@@ -14,7 +14,10 @@ describe('Graph implemented using an adjacency list', () => {
 
   test('default edge weight is 1', () => {
     const g = new Graph()
-    expect(g).toEqual()
+    g.addVertex('a')
+    g.addVertex('b')
+    g.addEdge('a', 'b')
+    expect(g.edge('a', 'b')).toEqual(1)
   })
 
   test("creates new vertex on insert if edge doesn't exist", () => {
@@ -33,7 +36,7 @@ describe('Graph implemented using an adjacency list', () => {
   })
 
   test('has edges in both directions if undirected', () => {
-    const g = new Graph()
+    const g = new Graph(false)
     g.addVertex('a')
     g.addVertex('b')
     g.addVertex('c')
@@ -107,7 +110,7 @@ describe('Graph implemented using an adjacency list', () => {
 
   test('maintains a list of vertices', () => {
     const g = new Graph()
-    assert.equal(g.vertices.size, 0)
+    expect(g.vertices.size).toEqual(0)
     g.addVertex('a')
     g.addVertex('b')
     g.addVertex('c')
@@ -120,7 +123,10 @@ describe('Graph implemented using an adjacency list', () => {
   test('does not allow repeated vertices', () => {
     const g = new Graph()
     g.addVertex('z')
-    expect(g.addVertex('z')).toThrow()
+
+    expect(() => {
+      g.addVertex('z')
+    }).toThrow()
   })
 
   test('returns list of neighbors of a given vertex', () => {
