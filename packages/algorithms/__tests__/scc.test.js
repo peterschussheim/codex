@@ -1,5 +1,5 @@
 import Graph from '../../data-structures/src/graph'
-import scc from '../src/search/scc'
+import scc from '../src/graph/scc'
 
 describe('Strongly connected components', () => {
   test('computes strongly connected components', () => {

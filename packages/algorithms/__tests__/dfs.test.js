@@ -1,5 +1,5 @@
 import Graph from '../../data-structures/src/graph'
-import dfs from '../src/search/dfs'
+import dfs from '../src/graph/dfs'
 
 describe('Depth-first search on a graph', () => {
   let graph

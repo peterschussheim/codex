@@ -1,5 +1,5 @@
 import Stack from '../../../data-structures/src/stack'
-import dfs from '../../../algorithms/src/search/dfs'
+import dfs from '../../../algorithms/src/graph/dfs'
 
 export default function scc(graph) {
   const r = graph.reverse()
