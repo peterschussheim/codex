@@ -1,10 +1,15 @@
 {
   "private": true,
   "workspaces": ["packages/*"],
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "browser": "dist/index.umd.js",
   "scripts": {
     "test": "NODE_ENV=test jest",
     "test:watch": "NODE_ENV=test jest --watch",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
     "precommit": "lint-staged",
     "lint": "eslint .",
     "eslint-check":
@@ -12,22 +17,26 @@
     "flow": "node_modules/.bin/flow"
   },
   "devDependencies": {
-    "@babel/core": "7.0.0-beta.34",
-    "@babel/preset-env": "7.0.0-beta.34",
-    "@babel/preset-flow": "7.0.0-beta.34",
+    "@babel/core": "7.0.0-beta.36",
+    "@babel/preset-env": "7.0.0-beta.36",
+    "@babel/preset-flow": "7.0.0-beta.36",
     "babel-7-jest": "21.3.2",
-    "babel-eslint": "8.0.3",
-    "eslint": "4.13.1",
+    "babel-eslint": "8.1.2",
+    "eslint": "4.14.0",
     "eslint-config-prettier": "2.9.0",
     "eslint-plugin-babel": "4.1.2",
     "eslint-plugin-flowtype": "2.40.1",
-    "eslint-plugin-prettier": "2.3.1",
-    "flow-bin": "0.61.0",
+    "eslint-plugin-prettier": "2.4.0",
+    "flow-bin": "0.62.0",
     "husky": "0.14.3",
-    "jest": "21.2.1",
+    "jest": "22.0.4",
     "lint-staged": "6.0.0",
-    "prettier": "1.9.2"
+    "prettier": "1.9.2",
+    "rollup": "0.53.2",
+    "rollup-plugin-commonjs": "8.2.6",
+    "rollup-plugin-node-resolve": "3.0.0"
   },
+  "files": ["dist"],
   "jest": {
     "transform": {
       "^.+\\.js$": "babel-7-jest"
