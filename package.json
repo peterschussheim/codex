@@ -8,8 +8,8 @@
     "bootstrap": "npm i && lerna bootstrap",
     "postbootstrap": "npm run build",
     "build": "lerna run -- build",
-    "test:watch": "NODE_ENV=test jest --watch",
-    "test": "NODE_ENV=test jest",
+    "test": "lerna run -- test",
+    "test:watch": "lerna run -- test:watch",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "precommit": "lint-staged",
     "lint": "eslint .",
@@ -30,16 +30,19 @@
     "lerna": "2.5.1",
     "lint-staged": "6.0.0",
     "prettier": "1.9.2",
-    "rollup": "0.53.2",
+    "rollup": "0.53.3",
     "rollup-plugin-babel": "4.0.0-beta.0",
     "rollup-plugin-commonjs": "8.2.6",
     "rollup-plugin-node-resolve": "3.0.0"
   },
   "files": ["dist"],
   "jest": {
+    "verbose": true,
     "transform": {
       "^.+\\.js$": "babel-7-jest"
     },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js)$",
+    "transformIgnorePatterns": ["<rootDir>.*(node_modules).*$"],
     "moduleDirectories": ["node_modules", "packages"],
     "automock": false,
     "modulePathIgnorePatterns": ["/node_modules/"]
