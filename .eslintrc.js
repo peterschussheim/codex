@@ -4,8 +4,8 @@ module.exports = {
     es6: true,
     node: true
   },
-  extends: ['plugin:flowtype/recommended', 'prettier', 'prettier/flowtype'],
-  plugins: ['babel', 'flowtype', 'prettier'],
+  extends: ['prettier'],
+  plugins: ['babel', 'prettier'],
   parserOptions: {
     sourceType: 'module'
   },
