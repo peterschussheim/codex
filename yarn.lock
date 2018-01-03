@@ -2586,7 +2586,7 @@ jest-changed-files@^22.0.3:
   dependencies:
     throat "^4.0.0"
 
-jest-cli@22.0.4, jest-cli@^22.0.4:
+jest-cli@^22.0.4:
   version "22.0.4"
   resolved "https://registry.yarnpkg.com/jest-cli/-/jest-cli-22.0.4.tgz#0052abaad45c57861c05da8ab5d27bad13ad224d"
   dependencies:
@@ -4051,10 +4051,6 @@ rollup-pluginutils@^2.0.1:
   dependencies:
     estree-walker "^0.3.0"
     micromatch "^2.3.11"
-
-rollup@0.53.2:
-  version "0.53.2"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.53.2.tgz#0de2e94d1676ccff58f7bb6c6b7ffa5ff5a1907e"
 
 rollup@0.53.3:
   version "0.53.3"

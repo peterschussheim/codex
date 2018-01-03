@@ -1,5 +1,5 @@
 import BST from '../src/bst'
-import bfs from '../../algorithms/src/search/bfs'
+import bfs from '../../algorithms/src/graph/bfs'
 
 describe('Binary Search Tree', () => {
   test('inserts elements respecting the BST restrictions', () => {
