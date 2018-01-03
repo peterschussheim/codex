@@ -1,5 +1,7 @@
 # codex
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/peterschussheim/codex.svg)](https://greenkeeper.io/)
+
 A collection of programming tools.
 
 ## Repo Structure
